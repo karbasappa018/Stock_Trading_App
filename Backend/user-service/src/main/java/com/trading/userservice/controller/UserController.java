@@ -33,7 +33,7 @@ public class UserController
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> loginUser(@Valid @RequestBody LoginRequest request)
     {
-        return ResponseEntity.ok(userService.login(request);
+        return ResponseEntity.ok(userService.login(request));
     }
 
     @GetMapping("/me")
@@ -48,11 +48,26 @@ public class UserController
     {
         return ResponseEntity.ok(userService.getUserById(userId));
     }
-
+    @PostMapping("{userId}/funds/add")
     public ResponseEntity<UserResponse> addFunds(@PathVariable String userId, @RequestParam BigDecimal amount)
     {
         return ResponseEntity.ok(userService.addFunds(userId,amount));
     }
+
+    @PostMapping("/{userId}/funds/deduct")
+    public ResponseEntity<UserResponse> deductFunds( @PathVariable String userId,@RequestParam BigDecimal amount)
+    {
+        return ResponseEntity.ok(userService.deductFunds(userId,amount));
+    }
+
+    public ResponseEntity<UserResponse> creditFunds(@PathVariable String userId, @RequestParam BigDecimal amount)
+    {
+        return ResponseEntity.ok(userService.creditFunds(userId,amount));
+    }
+
+
+
+
 
 
 }
