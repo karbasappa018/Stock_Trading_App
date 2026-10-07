@@ -29,7 +29,7 @@ public class MarketDataController
     @GetMapping("/stocks")
     public ResponseEntity<List<StockPrice>> getAllStocks()
     {
-        return ResponseEntity.ok(MarketDataService.getAllprices());
+        return ResponseEntity.ok(marketDataService.getAllPrices());
     }
 
     /*
